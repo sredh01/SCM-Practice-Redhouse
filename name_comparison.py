@@ -17,7 +17,9 @@ def process_user_honors_names(input_file):
 def process_user_list_names(list_file_names):
     data = pd.read_csv(list_file_names)
     list_of_names = (data['Last Name'] + ' ' + data['First Name']).str.strip().str.lower()
-    return list(list_of_names)
+
+    for name in list_of_names:
+        list_user_name.append(name)
 
 
 def compare(list1, list2):
@@ -31,18 +33,16 @@ def compare(list1, list2):
             DNE.append(names)
 
     for names in list2:
-        if names not in list2:
+        if names not in list1:
             DNE.append(names)
 
     return exists, DNE
 
 
 input_file = ''  # Insert file path
-
 list_file_names = ''  # Insert file path
-process_user_honors_names(input_file)
 
-process_user_list_names(list_file_names)
+process_user_honors_names(input_file)
 
 alive, not_alive = compare(honors_user_name, list_user_name)
 
