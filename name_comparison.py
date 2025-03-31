@@ -3,13 +3,12 @@ import pandas as pd
 honors_user_name = []
 list_user_name = []
 stuff = []
-JNumber =[]
 
 
 def process_user_honors_names(input_file):
     data = pd.read_csv(input_file)
 
-    fullname = data['First Name'] + ' ' + data['Last Name']
+    fullname = (data['First Name'] + ' ' + data['Last Name']).str.strip().str.lower()
 
     for name in fullname:
         honors_user_name.append(name)
@@ -17,34 +16,30 @@ def process_user_honors_names(input_file):
 
 def process_user_list_names(list_file_names):
     data = pd.read_csv(list_file_names)
-    list_of_names = data['Last Name'] + ' ' + data['First Name']
+    list_of_names = (data['Last Name'] + ' ' + data['First Name']).str.strip().str.lower()
+    return list(list_of_names)
 
-    for name in list_of_names:
-        list_user_name.append(name)
 
 def compare(list1, list2):
     exists = []
     DNE = []
 
-    if list1 == list2:
-        return True
-    else:
-        for names in list1:
-            if names in list1:
-                exists.append(names)
-            else:
-                DNE.append(names)
+    for names in list1:
+        if names in list2:
+            exists.append(names)
+        else:
+            DNE.append(names)
 
-        for name in list2:
-            if name not in list1:
-                DNE.append(name)
+    for names in list2:
+        if names not in list2:
+            DNE.append(names)
 
     return exists, DNE
 
 
-input_file = ''
+input_file = ''  # Insert file path
 
-list_file_names = ''
+list_file_names = ''  # Insert file path
 process_user_honors_names(input_file)
 
 process_user_list_names(list_file_names)
