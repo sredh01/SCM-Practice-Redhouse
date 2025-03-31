@@ -1,0 +1,4 @@
+Feature note:
+- Add some error handling for the CSV formats
+- Maybe rewrite the entire code
+- Feature Note 3
