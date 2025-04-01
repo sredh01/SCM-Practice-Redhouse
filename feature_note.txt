@@ -2,3 +2,6 @@ Feature note:
 - Add some error handling for the CSV formats
 - Maybe rewrite the entire code
 - Feature Note 3
+- Feature Note 4 Addition
+- Feature Note 5 Addition
+- I love Diet Coke
